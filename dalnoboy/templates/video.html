@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block title %}<title>Видео</title>{% endblock %}
+{% load static %}
+{% block content %}
+<!-- Section -->
+<section>
+    <header class="major">
+        <h2>Подробно</h2>
+    </header>
+    <div class="posts">
+        <article>
+            <video id="my-video" class="video-js" controls preload="auto" width="640" height="360"
+                   style="" data-setup="{}">
+                <source src="{% url 'stream' video.id %}" type="video/mp4"/>
+                <source src="{% url 'stream' video.id %}" type="video/webm"/>
+            </video>
+            <h3>{{ video.title }}</h3>
+            <p>{{ video.description|slice:":100" }}</p>
+            <span >{{ video.create_at }}</span>
+            <div >
+
+            </div>
+
+            <ul class="actions">
+                <li><a href="#" class="button">More</a></li>
+            </ul>
+        </article>
+
+    </div>
+</section>
+
+{% endblock %}
