@@ -2,21 +2,48 @@
 {% load static %}
 {% block content %}
 <!-- Banner -->
+	{% for item in stranic %}
 <section id="banner">
 	<div class="content">
 		<header>
-			<h1>Hi, I’m Editorial<br />
-				by HTML5 UP</h1>
+			<h1>{{ item.title }}</h1>
 			<p>A free and fully responsive site template</p>
 		</header>
-		<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+		<p>{{ item.description }}</p>
 		<ul class="actions">
-			<li><a href="#" class="button big">Learn More</a></li>
+			<li><a href="{{ item.url }}" class="button big">{{ item.url }}</a></li>
 		</ul>
 	</div>
 	<span class="image object">
-		<img src="{% static 'stat/images/pic10.jpg' %}" alt="" />
+		<img src="{{ item.image.url }}" alt="" />
 	</span>
-</section>
 
+</section>
+<div class="posts">
+	<article>
+		<video id="my-video" class="video-js" controls preload="auto" width="640" height="360"
+                   style="" data-setup="{}">
+                <source src="{% url 'stream' item.id %}" type="video/mp4"/>
+                <source src="{% url 'stream' item.id %}" type="video/webm"/>
+            </video>
+	</article>
+
+</div>
+	{% endfor %}
+
+
+<div class="posts">
+        {% for video in video_list_i %}
+        <article>
+            <a href="{% url 'video' video.id %}" class="image"><img src="{{ video.image.url }}" alt="" /></a>
+            <h3>{{ video.title }}</h3>
+            <p>{{ video.description|slice:":100" }}</p>
+            <span >{{ video.create_at }}</span>
+            <ul class="actions">
+                <li><a href="#" class="button">More</a></li>
+            </ul>
+        </article>
+        {% endfor %}
+    </div>
+<h2><a href="{% url 'list_video' %}">Ещё</a></h2>
 {% endblock %}

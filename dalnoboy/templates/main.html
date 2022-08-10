@@ -24,7 +24,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="{% url 'index' %}" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<a href="{% url 'index' %}" class="logo"><strong>Сайт для дальнобойщиков</strong></a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -56,30 +56,7 @@
 									<ul>
 										<li><a href="{% url 'index' %}">Главная</a></li>
 										<li><a href="{% url 'list_video' %}">Видео</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
+										<li><a href="{% url 'about' %}">О нас</a></li>
 									</ul>
 								</nav>
 
@@ -88,10 +65,14 @@
 							<!-- Section -->
 								<section>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
+										<header class="major">
+											<h2>Контакты</h2>
+										</header>
+										{% for item in str %}
+										<li class="icon solid fa-envelope">{{ item.email }}</li>
+										<li class="icon solid fa-phone">{{ item.id_n }}</li>
+										<li class="icon solid fa-home"><a href="{{ item.url_ad }}">{{ item.title_ad }}</a></li>
+										{% endfor %}
 									</ul>
 								</section>
 

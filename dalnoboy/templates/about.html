@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% block title %}<title>О нас</title>{% endblock %}
+{% load static %}
+{% block content %}
+<!-- Section -->
+<!-- Content -->
+								<section>
+									{% for item in str %}
+									<header class="main">
+										<h1>О нас</h1>
+									</header>
+
+									<span class="image main"><img src="{{ item.image.url }}" alt="" /></span>
+
+									<p>{{ item.description }}</p>
+									<ul class="contact">
+
+										<li class="icon solid fa-envelope">{{ item.email }}</li>
+										<li class="icon solid fa-phone">{{ item.id_n }}</li>
+										<li class="icon solid fa-home"><a href="{{ item.url_ad }}">{{ item.title_ad }}</a></li>
+									</ul>
+									<ul class="actions">
+              						  <li><a href="{{ item.url }}" class="button">More</a></li>
+									</ul>
+								{% endfor %}
+								</section>
+
+{% endblock %}

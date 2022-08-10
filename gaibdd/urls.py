@@ -23,6 +23,7 @@ from dalnoboy import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('about/',views.about, name='about'),
     path('list_video/', views.get_list_video, name='list_video'),
     path('<int:pk>/', views.get_video, name='video'),
     path('stream/<int:pk>/', views.get_streaming_video, name='stream'),
